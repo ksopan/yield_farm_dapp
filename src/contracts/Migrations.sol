@@ -1,4 +1,4 @@
-pragma solidity '^0.5.0';
+pragma solidity ^0.5.0;
 
 contract Migrations {
     address public owner;
@@ -12,13 +12,13 @@ contract Migrations {
         if (msg.sender == owner) _; // if true continue
     }
 
-    function set_completed(uint completed) public restricted {
+    function setCompleted(uint completed) public restricted {
         last_completed_migrations = completed;
     }
 
     function upgrade(uint new_address) public restricted {
         Migrations upgraded = Migrations(new_address);
-        upgraded.set_completed(last_completed_migrations);
+        upgraded.setCompleted(last_completed_migrations);
     }
 
 }
