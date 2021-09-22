@@ -1,0 +1,38 @@
+Custom Token Functionality Assignment
+Wow.. well that was quite a whole lot of debugging, compiling and deploying going on at the end of this section! Before proceeding on this assignment you should have successfully fixed all the errors and deployed the fully functional Token Contracts with successful fetches on the Truffle console.
+
+If so, congratulations for getting through this section. It's tougher to conceptualize without the IDE or Front end yet laid out, but hopefully all the prior project Solidity examples have prepared you enough so that you are following along well enough and learning valuable patterns and thought process along the way! 
+
+Your next move here is to build out the functionality of your custom token (You should have completed the previous assignment on building out the shell of your custom token before advancing to this stage).
+
+1. Set up transfer events and approval events. Our data will include from, to and value for each where in the Approval event from will be from the owner and to will be to the spender (don't forget to add indexes for filtering).
+
+2.  To keep track of transfers of balances create a mapping balanceOf which takes address as key and amount as value.
+
+3. To keep track of allowance create a nested map which takes addresses for key and mapping of addresses and amounts as the value and set it to allowance. And finally emit the transfer information.
+
+4. Create a transfer function which returns a bool to determine the success of the transactions. We should make sure that the balanceOf the sender has at least the the amount in their wallets of how much they want to send. We want to update the balance of the transfer of both the transferrer and the person being transferred to. 
+
+5. Write an approve function which returns a bool to determine the approval of transfers from third parties.
+
+6. Set the allowance of the amount from the spender equal to the value.
+
+7. Emit the pertinent information of the Approval.
+
+8. Bonus - try and write out a transferFrom function on your own with as much logic as you can add!
+
+
+
+An advantage of arrow function is that it can access the this.name property in the function without excplicitly defned it.
+For Example,
+following fucntion is not able to access this.name defined in costructor
+function sum(a,b){
+    return a+b ;
+    }
+
+but with arrow function we can do this,
+let sum = (a,b) => a + b + this.name
+
+
+ A function with no name is an anonymus function espcially in arrow functions for example,
+ ()=> a+b; is anonymous function
