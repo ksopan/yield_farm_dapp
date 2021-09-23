@@ -55,8 +55,57 @@ contract('DecentralBank',([owner, customer]) => {
             let balance = await rwd.balanceOf(decentralBank.address)
             assert.equal(balance,tokens('1000000'))
             })
-
         })
     
+    describe('Yield Farming', async () => {
+        it('rewards tokens for staking', async () => {
+        
+        let result
+        // check investor/customer Balance . cutsomer is from line #9
+        result = await tether.balanceOf(customer)
+        assert.equal(result.toString(),tokens('100'),'Customer tether balance before staking')
+
+        // Check Staking for customers of 100 tokens
+        await tether.approve(decentralBank.address,tokens('100'),{from: customer})
+        await decentralBank.depositTokens(tokens('100'), {from: customer})
+
+        // Check Update balance of customer
+        result = await tether.balanceOf(customer)
+        assert.equal(result.toString(),tokens('0'),'Customer tether balance after staking 100 tokens')
+        
+        // Check Update balance of Owner
+        result = await tether.balanceOf(decentralBank.address)
+        assert.equal(result.toString(),tokens('100'),'Decentral tether balance after staking from customer ')
+        
+        // Is Staking Update
+        result = await decentralBank.isStaking(customer)
+        assert.equal(result.toString(),'true','cutomer status after staking')
+
+        // Issue tokens by owner as incentives
+        await decentralBank.issueTokens({from: owner})
+
+        // Ensure only the owner can Issue Tokens PS: Customers not allow to issue tokens
+        await decentralBank.issueTokens({from: customer}).should.be.rejected;
+
+        // Unstake Token Test
+        await decentralBank.unstakeTokens({from: customer})
+
+        // Check unstaking Balances
+
+        // Check Update balance of customer
+        result = await tether.balanceOf(customer)
+        assert.equal(result.toString(),tokens('100'),'Customer tether balance after unstaking')
+        
+        // Check Update balance of Owner
+        result = await tether.balanceOf(decentralBank.address)
+        assert.equal(result.toString(),tokens('0'),'Decentral tether balance after staking from customer ')
+        
+        // Is Staking Update
+        result = await decentralBank.isStaking(customer)
+        assert.equal(result.toString(),'false','cutomer status is not staking after unstaking')
+
+        })
+
+    })
 
 })

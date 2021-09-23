@@ -36,3 +36,6 @@ let sum = (a,b) => a + b + this.name
 
  A function with no name is an anonymus function espcially in arrow functions for example,
  ()=> a+b; is anonymous function
+
+ // msg.ender is always a person who is calling the contract whether it can be owner or customer
+
