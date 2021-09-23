@@ -12,7 +12,7 @@ contract('DecentralBank',([owner, customer]) => {
     function tokens(number){
         return web3.utils.toWei(number,'ether')
     }
-
+// set up before hooks
     before(async ()=> {
         // Load Contracts
         tether = await Tether.new()
@@ -44,4 +44,19 @@ contract('DecentralBank',([owner, customer]) => {
             assert.equal(name, 'RWD') 
             })
         })
+
+    describe('Decentral Bank Deployment', async () => {
+        it('Check Transfer successfully', async ()=> {
+            const name = await decentralBank.name()
+            assert.equal(name, 'Decentral Bank') 
+            })
+
+        it('contract has tokens', async () => {
+            let balance = await rwd.balanceOf(decentralBank.address)
+            assert.equal(balance,tokens('1000000'))
+            })
+
+        })
+    
+
 })
