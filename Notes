@@ -39,3 +39,9 @@ let sum = (a,b) => a + b + this.name
 
  // msg.ender is always a person who is calling the contract whether it can be owner or customer
 
+Explain states, props and loading 
+Read Web3.js docs
+Get concept clears such as msg.sender and everything
+ReactJS Loading
+
+
