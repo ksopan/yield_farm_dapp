@@ -5,6 +5,7 @@ import Tether from '../truffle_abis/Tether.json'
 import RWD from '../truffle_abis/RWD.json'
 import DecentralBank from '../truffle_abis/DecentralBank.json'
 import Main from './Main.js'
+import { on } from 'events';
 
  class App extends Component {
 
@@ -72,9 +73,29 @@ import Main from './Main.js'
     }
 
     // Make two functions for stakes and other one for unstakes -
-    // Leverage our decentralBank contract - deposit tokens and unstaking
-    // depositTokens transferFrom
+    // we are gonna leverage our decentralBank contract - deposit tokens and unstaking
+    // All of following is for staking:
+    // depositTokens transferFrom ...
+    // function approve transaction hash ----
     // STAKING Function .. Access decentralBank.depositTokens ans send transactionHash ..
+
+    // staking function
+    stakeTokens = (amount) => { 
+        this.setState({loading: true})
+        this.state.tether.methods.approve(this.state.decentralBank._address, amount).send({from: this.state.account}).on('transactionHash', (hash) =>{
+        this.state.decentralBank.methods.depositTokens(amount).send({from: this.state.account}).on('transactionHash', (hash) =>{
+            this.setState({loading: false})
+        })
+    })
+    }
+
+    // Unstaking Function
+    unstakeTokens = (amount) => { 
+        this.setState({loading: true})
+        this.state.decentralBank.methods.unstakeTokens().send({from: this.state.account}).on('transactionHash', (hash) =>{
+            this.setState({loading: false})
+    })
+    }
 
     constructor(props){
         super(props)
@@ -99,6 +120,8 @@ import Main from './Main.js'
              tetherBalance={this.state.tetherBalance}
              rwdBalance={this.state.rwdBalance}
              stakingBalance={this.state.statkingBalance}
+             stakeTokens={this.stakeTokens}
+             unstakeTokens={this.unstakeTokens}
              />}
          return (
              <div>
