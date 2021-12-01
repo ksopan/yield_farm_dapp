@@ -7,7 +7,7 @@ Built with with React.js/Solidity/Web3.js
 
 1. Install [MetaMask](https://metamask.io/) into your browser
 
-2. [MetaMask](https://metamask.io/)  network switched from ```Main Ethereum Network``` to ```Rinkeby Test Network```
+2. [MetaMask](https://metamask.io/)  network switched from ```Main Ethereum Network``` to ```Ganache```
 
 3. Install [Ganache](https://www.trufflesuite.com/ganache) and follow steps to [set it up](https://www.trufflesuite.com/docs/ganache/quickstart) for local testing with MetaMask.
 
@@ -23,7 +23,7 @@ $ git clone https://github.com/ksopan/yield_farm_dapp
 2.  CD into the project and compile solidity codes with truffle:
 
 ```bash
-ruffle migrate --reset
+truffle migrate --reset
 truffle compile
 truffle test
 ```
@@ -31,8 +31,6 @@ truffle test
 2. CD into the project and install the dependencies:
 
 ```bash
-$ yarn 
-# or
 $ npm install 
 ```
 
@@ -45,6 +43,9 @@ $ npm start
 
 # Project Summary
 This is a personal project aimed at educating and familiarizing myself with the Solidity language for smart contracts for the Ethereum blockchain, while interacting with the data with React.js.
+
+
+I developed this project for a ```Complete DApp - Solidity & React - Blockchain Development``` course on Udemy.
 
 The smart contract allows users to deposit to a Carbon Token (CTK) in a Bank, which in this case is a 'mock Bank', and user can also withdraw CTK into account from Bank. 
 
