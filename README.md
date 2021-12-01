@@ -1,4 +1,11 @@
-# Site Preview
+# Project Summary
+This is a personal project aimed at educating and familiarizing myself with the Solidity language for smart contracts for the Ethereum blockchain, while interacting with the data with React.js.
+
+
+I developed this project for a ```Complete DApp - Solidity & React - Blockchain Development``` course on Udemy.
+
+The smart contract allows users to deposit to a Carbon Token (CTK) in a Bank, which in this case is a 'mock Bank', and user can also withdraw CTK into account from Bank. 
+
 
 Built with with React.js/Solidity/Web3.js 
  
@@ -39,18 +46,6 @@ $ npm install
 ```bash
 $ npm start
 ```
-
-
-# Project Summary
-This is a personal project aimed at educating and familiarizing myself with the Solidity language for smart contracts for the Ethereum blockchain, while interacting with the data with React.js.
-
-
-I developed this project for a ```Complete DApp - Solidity & React - Blockchain Development``` course on Udemy.
-
-The smart contract allows users to deposit to a Carbon Token (CTK) in a Bank, which in this case is a 'mock Bank', and user can also withdraw CTK into account from Bank. 
-
-
-
 
 ## Demo shows successful deposit and withdrawal of 20 CTK.
 ![](MOV1.gif)
